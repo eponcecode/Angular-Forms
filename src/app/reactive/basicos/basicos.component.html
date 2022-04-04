@@ -1,0 +1,67 @@
+<h2>Reactive: <small> Básicos</small></h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="guardar()" [formGroup]="formularioBasico">
+            <!--PRODUCTO-->
+            <div class="mb-3 row">
+                <label for="" class="col-sm-3 col-form-label">Producto</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control"
+                    placeholder="Nombre del producto"
+                    formControlName="nombre">
+                    <span class="form-text text-danger"
+                    *ngIf="validarCampo('nombre')">Debe ser de 3 letras</span>
+                </div>
+            </div>
+            <!--PRECIO-->
+            <div class="mb-3 row">
+                <label for="" class="col-sm-3 col-form-label">Precio</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control"
+                    placeholder="Precio del producto"
+                    formControlName="precio">
+                    <span class="form-text text-danger" *ngIf="validarCampo('precio')">
+                        El precio debe ser mayor o igual a 0
+                    </span>
+                </div>
+            </div>
+            <!--EXISTENCIAS-->
+            <div class="mb-3 row">
+                <label for="" class="col-sm-3 col-form-label">Existencias</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control"
+                    placeholder="Existencias del producto"
+                    formControlName="existencias">
+                    <span class="form-text text-danger" *ngIf="validarCampo('existencias')">
+                        Las existencias deben ser mayor o igual a 0
+                    </span>
+                </div>
+            </div>
+            <!--SUBMIT-->
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                    class="btn btn-primary float-end">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <hr>
+        <span>Valid</span>
+        <pre>{{formularioBasico.valid}}</pre>
+        <span>Pristine</span>
+        <pre>{{formularioBasico.pristine}}</pre>
+        <span>Touched</span>
+        <pre>{{formularioBasico.touched}}</pre>
+        <hr>
+        <span>Value</span>
+        <pre>{{formularioBasico.value | json}}</pre>
+        <hr>
+        <span>Precio</span>
+        <pre>{{formularioBasico.controls['precio'].errors | json}}</pre>
+    </div>
+</div>

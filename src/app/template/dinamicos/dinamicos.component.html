@@ -1,0 +1,67 @@
+<h2>Template: <small>Dinámicos</small></h2>
+<hr>
+<form (ngSubmit)="guardar()" #basicForm="ngForm" autocomplete="off">
+    <!--GUARDAR-->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Nombre <span>*</span></label>
+        <div class="col-sm-9">
+            <input  class="form-control m-1" placeholder="Nombre de la persona" 
+            [ngModel]="persona.nombre" name="nombre" required>
+            <span class="form-text text-danger"
+            *ngIf="Nombre()">Campo obligatorio</span>
+        </div>
+    </div>
+    <!--Agregar Favorito-->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Agregar</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <input
+                class="form-control"
+                placeholder="Agregar favorito"
+                [(ngModel)]="nuevoFavorito"
+                name="nuevoFavorito" 
+                (keyup.enter)="agregar()" >
+                <button class="btn btn-outline-primary m-1" type="button"
+                (click)="agregar()">
+                    Agregar
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--Lista Favorito-->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Favoritos</label>
+        <div class="col-sm-9">
+            <div class="input-group" *ngFor="let favorito of persona.favoritos; let id= index">
+                <input [(ngModel)]="favorito.nombre"
+                name="favorito_{{id}}"
+                class="form-control m-1" >
+                <button class="btn btn-outline-danger m-1" type="button"
+                (click)="eliminar(id)">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-primary float-end" 
+            [disabled]="basicForm.invalid" (click)="guardar()">Guardar</button>
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div class="col">
+        <hr>
+        <span>Valid</span>
+        <pre>{{basicForm.valid}}</pre>
+        <span>Pristine</span>
+        <pre>{{basicForm.pristine}}</pre>
+        <span>Touched</span>
+        <pre>{{basicForm.touched}}</pre>
+        <hr>
+        <span>Value</span>
+        <pre>{{basicForm.value | json}}</pre>
+    </div>
+</div>
