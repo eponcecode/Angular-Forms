@@ -3,7 +3,8 @@ import { MenuItem } from '../interfaces/menu-item';
 
 @Component({
   selector: 'app-side-menu',
-  templateUrl: './side-menu.component.html'
+  templateUrl: './side-menu.component.html',
+  styleUrls:['./side-menu.component.css']
 })
 export class SideMenuComponent {
   templateMenu: MenuItem[] = [
@@ -34,4 +35,14 @@ export class SideMenuComponent {
       ruta: './reactive/switches'
     }
   ]
+  authMenu: MenuItem[] = [
+  {
+    texto: 'Registro',
+    ruta: './auth/registro'
+  }/*,
+  {
+    texto: 'Login',
+    ruta: './auth/login'
+  }*/
+]
 }

@@ -1,0 +1,61 @@
+<h2>Validaciones <small>Reactivas</small></h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <form autocomplete="off" [formGroup]="registerForm" (ngSubmit)="registrar()">
+            <div class="row m-3">
+                <!-- Nombre -->
+                <label class="col-sm-3 col-form-label">Nombre (<span class="form-text  text-danger">*</span>)</label>
+                <div class="col-sm-9 mb-3">
+                    <input type="text" class="form-control"
+                    placeholder="Nombre de usuario" formControlName="nombre">
+                <span class="form-text text-danger"
+                *ngIf="campoValido('nombre')">Debe ser en formato de Nombre y Apellido</span>
+                </div>
+                <!-- email -->
+                <label class="col-sm-3 col-form-label">email (<span class="form-text  text-danger">*</span>)</label>
+                <div class="col-sm-9 mb-3">
+                    <input type="email" class="form-control"
+                    placeholder="Email del usuario" formControlName="email">
+                    <span class="form-text text-danger" *ngIf="campoValido('email')">{{emailErrorMSG}}</span>
+                </div>
+                <!-- Username -->
+                <label class="col-sm-3 col-form-label">Username (<span class="form-text  text-danger">*</span>)</label>
+                <div class="col-sm-9 mb-3">
+                    <input type="text" class="form-control "
+                    placeholder="Nombre código del usuario" formControlName="username">
+                    <span class="form-text text-danger"
+                    *ngIf="campoValido('username')">{{usernameError}}</span>
+                </div>
+                <!-- Password -->
+                <label class="col-sm-3 col-form-label">Password (<span class="form-text  text-danger">*</span>)</label>
+                <div class="col-sm-9 mb-3">
+                    <input type="password" class="form-control"
+                    placeholder="Password de la cuenta" formControlName="password">
+                    <span class="form-text text-danger"
+                *ngIf="campoValido('password')">La contraseña debe tener al menos de 6 carácteres</span>
+                </div>
+                <!-- Confirmacion Password -->
+                <label class="col-sm-3 col-form-label">Confirmar Password (<span class="form-text  text-danger">*</span>)</label>
+                <div class="col-sm-9 mb-3">
+                    <input type="password" class="form-control mb-3"
+                    placeholder="Confirmación del password de la cuenta" 
+                    formControlName="password_confirm">
+                    <span class="form-text text-danger"
+                *ngIf="campoValido('password_confirm')">Las contraseñas deben ser iguales</span>
+                </div>
+                <!-- Button Registrar -->
+                <div class="col m-2">
+                    <div class="row">
+                        <button class="btn btn-primary" type="submit" [disabled]="this.registerForm.invalid">Registrar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<h5>Datos de prueba</h5>
+<h5><small> <b>Nombre:</b> Test One</small></h5>
+<h5><small> <b>Correo:</b> test_1@correo.mx</small></h5>
+<h5><small><b>Username:</b>Test_1</small></h5>
