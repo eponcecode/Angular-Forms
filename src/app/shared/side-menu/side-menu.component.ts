@@ -39,10 +39,15 @@ export class SideMenuComponent {
   {
     texto: 'Registro',
     ruta: './auth/registro'
-  }/*,
+  }]/*,
   {
     texto: 'Login',
     ruta: './auth/login'
   }*/
-]
+  selectoresMenu: MenuItem[] = [
+    {
+      texto: 'Selectores Anidados',
+      ruta: './selectors'
+    }
+  ]
 }
